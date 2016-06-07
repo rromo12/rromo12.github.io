@@ -91,9 +91,7 @@
     <!-- Portfolio Grid Section -->
     <section id="body">
         <body style="background-color:white;">
-            <div>
                 <div class="container col-lg-8 col-lg-offset-2">
-
                     <h1 class="text-center">
                         Summary
                     </h1>
@@ -101,59 +99,67 @@
                         The issue we addressed in this project is determining how long a Northwestern IT support request  
                         will take to complete at the time of its creation.
                     </p>
+                    <h3 class="text-center">Motivation</h3>
                     <p>
                         Everyday support desks all over the world support millions of users. Each of these users presents 
                         their own unique problem and wants to know how long it will take for this problem to be solved. 
                         This presents a challenge to the help desk staff who cannot provide accurate estimates for every issue. 
                         We propose the use of machine learning techniques in order to provide a prediction for how long  
                         an issue will take to complete at the time of creation.
-                    </p>
-                    <p>
                         Implementing these predictions will allow for helpdesk staff to not only provide users with a 
                         more accurate estimate of when their issue will be resolved but could also help identify any possible 
                         bottlenecks that could be avoided or made more efficient to provide better service. For example maybe 
                         we might notice a support group which takes a long time to process tickets because they are receiving 
                         too many issues which might suggest they are short staffed.
                     </p>
+                    <h3 class="text-center">Methodology</h3>
                     <p>
-                        We trained a decision tree to classify tickets based on our features. Most of our features are 
-                        discrete, and with the ones that are continuous, we nominalized them by putting them into bins. 
                         Our features are attributes of the ticket, such as date and time submitted, its categorization, etc.
+                        We trained our data using a variety of different machine learning algorithms, focusing on algorithms which provided rules.
+                        We then compared the accuracy of these algorithms using 10-fold cross validation on each.
+                        We found the algorithms that yielded the highest accuracy to be the J48 decision tree and IBk Nearest Neighbors Algorithms and fine tuned their parameters to get the highest accuracy. Figure 1 shows the learning curve for the J48 algorithm on our training instances.
+                        We then used these tuned algorithms and ran them against a held out test set to provide the results below
                     </p>
-                    <p>
-                        We trained our data on a bunch of different machine learning algorithms, using 10-fold cross 
-                        validation every time. We chose the algorithm that yielded the highest accuracy (decision tree) 
-                        on the training data.
-                    </p>
-                    <p>
-                        The most important attributes are whether the ticket was assigned to the main support center 
-                        or elsewhere, and if the ticket was submitted during a weekday or the weekend. These were the 
-                        first splits the decision tree made.
-                    </p>
-                </div>
-                <div class= "container">
+                    </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <img class= "center-block"class="img-responsive"src="https://403c7530832b86e26581ca51f974f3a9ce66db25.googledrive.com/host/0B8LPqTcZt1K0ZEMyejgxVlNNRDg" alt="Learning Curve">
                         </div>
                     </div>
+                    <div class="text-center">
+                        <p>Figure 1:The learning curve produced by the J48 Decision Tree Algoritmh on our data</p>
+                    </div>
+                    <h3 class="text-center">Results</h3>
+                    <p class="container col-lg-8 col-lg-offset-2">
+                        Using the J48 learning algorithm the best accuracy we achieved was 66.5%. This accuracy is not as high as we hoped to achieved
+                        and we believe there are several reasons for that. First of ou 8690 instances about 63% were in the category of "12 hours or Less"
+                        While the rest of the instances were split among 10 categories, along with this we were missing key attributes including who worked on the issue and what support tools were used. Despite this we were still able to garner some useful information from our decision tree.
+                        Looking at the top decision attributes within the tree we found the most important attributes are whether the ticket was assigned to the main support center or elsewhere, and if the ticket was submitted during a weekday or the weekend. We also found that issues regarding "Our Northwestern" tend to take longer to resolve which is something worth investigating to see if the efficiency of such issues can be improved.
+                    </p>
                 </div>
-            </body>    
-        </section>
+          </body> 
+    </section>
+
+    <section>
+    </section>
 
     <!-- About Section -->
     <section class="success" id="about">
         <div class="container">
+            <h2 class="container col-lg-8 col-lg-offset-2 text-center">Conclusion and Report</h2>
+                    <p class="container col-lg-8 col-lg-offset-2">
+                        Overall, there's still a lot more work to be done before this could be used by support staff to provide accurate estimates but we believe that using more data and a few additional attributes, particularly attributes such as who submitted and worked on the issue, and features gathered from the description and title of the issue would greatly improve accuracy.
+                    </p>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Report</h2>
+                    <h1>Report</h1>
                     <hr class="star-light">
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="#" class="btn btn-lg btn-outline">
-                        <i class="fa fa-download"></i> View Report
+                    <a href="FinalReport.pdf" class=" btn btn-lg btn-outline">
+                        <i class="fa fa-file-pdf-o"></i> View Report
                     </a>
                 </div>
             </div>
